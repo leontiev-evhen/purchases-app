@@ -1,1 +1,1 @@
-export default (data, id) => data.map((prop, index) => prop._id === id && prop._id).indexOf(id);
+export default (data, id) => data.map((prop) => prop._id === id && prop._id).indexOf(id);

@@ -36,7 +36,7 @@
 
 <script>
 import BButton from './Button';
-import { mapGetters, mapActions } from 'vuex'
+
 export default {
 	name: 'Item',
 	props: {

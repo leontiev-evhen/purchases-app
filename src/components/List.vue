@@ -7,7 +7,7 @@
 					variant="success"
 					@dismissed="dismissCountDown=0"
 					@dismiss-count-down="countDownChanged">
-	  		<p>{{alertMessage}}</p>
+					<p>{{alertMessage}}</p>
 			</b-alert>
 				<div class="list" v-if="purchases">
 					<b-list-group>
@@ -21,11 +21,11 @@
 				</div>
 			</b-col>
 			<b-col cols="12" md="4">
-        <sidebar
-          @user="handleUser"
-          @message="handleMessage"
-          @onSubmit="createPurchase"
-        />
+				<sidebar
+					@user="handleUser"
+					@message="handleMessage"
+					@onSubmit="createPurchase"
+				/>
 			</b-col>
 		</b-row>
 	</div>
@@ -40,7 +40,6 @@ import {
 	put,
 	remove
 } from '@/api';
-import socket from '@/socket';
 import getIndex from '@/helper';
 
 export default {
@@ -52,7 +51,7 @@ export default {
 			message: '',
 			success: false,
 			dismissSecs: 2,
-	  	dismissCountDown: 0,
+			dismissCountDown: 0,
 			error: false,
 			loading: false,
 			alertMessage: '',
@@ -60,12 +59,12 @@ export default {
 		}
 	},
 	methods: {
-      handleUser(value) {
-        this.user = value;
-      },
-       handleMessage(value) {
-        this.message = value;
-      },
+			handleUser(value) {
+				this.user = value;
+			},
+			handleMessage(value) {
+				this.message = value;
+			},
 			async getPurchases() {
 				try {
 					const data = await get();
@@ -110,26 +109,24 @@ export default {
 				}
 			},
 			countDownChanged (dismissCountDown) {
-	  		this.dismissCountDown = dismissCountDown
+				this.dismissCountDown = dismissCountDown;
 			},
 			showAlert (message) {
 				this.alertMessage = message;
-	  		this.dismissCountDown = this.dismissSecs
+				this.dismissCountDown = this.dismissSecs;
 			}
 	},
 	mounted() {
 		this.getPurchases();
 	},
 	sockets: {
-    connect() {
+		connect() {
 			this.isConnected = true;
-    },
-
-    disconnect() {
-      this.isConnected = false;
-    },
-
-    CREATE(data) {
+		},
+		disconnect() {
+			this.isConnected = false;
+		},
+		CREATE(data) {
 			this.purchases.unshift(JSON.parse(data));
 		},
 		DELETE(id) {
@@ -139,10 +136,10 @@ export default {
 			const { message, id } = data;
 			this.purchases[getIndex(this.purchases, id)].message = message
 		}
-  },
+	},
 	components: {
-    ListItem,
-    Sidebar
+		ListItem,
+		Sidebar
 	}
 }
 </script>

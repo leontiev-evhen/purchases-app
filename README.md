@@ -1,4 +1,4 @@
-# my-project
+# purchases-app
 
 ## Project setup
 ```

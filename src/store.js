@@ -15,13 +15,13 @@ export default new Vuex.Store({
     SOCKET_DISCONNECT(state) {
       state.isConnected = false;
     },
-    SOCKET_CREATE(state, payload) {
+    SOCKET_CREATE() {
       
     },
-    SOCKET_DELETE(state, payload) {
+    SOCKET_DELETE() {
       
     },
-    SOCKET_UPDATE(state, payload) {
+    SOCKET_UPDATE() {
       
     },
   }
